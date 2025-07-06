@@ -1,5 +1,7 @@
 package br.dev.as.catalog.service;
 
+import br.dev.as.catalog.dto.CommentDTO;
+import br.dev.as.catalog.dto.ProductDTO;
 import br.dev.as.catalog.entities.mysql.Category;
 import br.dev.as.catalog.entities.mysql.Product;
 import br.dev.as.catalog.repositories.mysql.CategoryRepository;
@@ -18,6 +20,9 @@ public class ProductService {
 
     @Autowired
     private CategoryRepository categoryRepo;
+
+    @Autowired
+    private CommentService commentService;
 
     public ProductService() {
     }
@@ -44,8 +49,28 @@ public class ProductService {
                .orElseThrow(() -> new IllegalArgumentException("Produto não encontrado!"));
     }
 
+    public ProductDTO getProductResumeById(UUID productId) {
+
+        List<CommentDTO> comments = commentService.getResumeComments(productId);
+
+        double averageRating = comments.stream()
+                .filter(c -> c.rating() != null) // ignora ratings nulos
+                .mapToDouble(CommentDTO::rating)
+                .average()
+                .orElse(0.0); // retorna 0.0 se a lista estiver vazia ou sem ratings válidos
+
+        Product product = getProductById(productId);
+
+
+
+        return new ProductDTO(product.getName(),product.getDescription(),product.getPrice(), averageRating, comments);
+
+    }
+
     public void deleteProduct(UUID id) {
 
         repo.deleteById(id);
     }
+
+
 }

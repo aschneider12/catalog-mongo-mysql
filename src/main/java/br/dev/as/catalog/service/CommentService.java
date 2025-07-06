@@ -1,5 +1,6 @@
 package br.dev.as.catalog.service;
 
+import br.dev.as.catalog.dto.CommentDTO;
 import br.dev.as.catalog.entities.mongo.Comment;
 import br.dev.as.catalog.entities.mysql.Product;
 import br.dev.as.catalog.repositories.mongo.CommentRepository;
@@ -51,5 +52,10 @@ public class CommentService {
 
     public Double getRatingAvgForProduct(UUID productId) {
         return repo.averageRatingForProduct(productId);
+    }
+
+    public List<CommentDTO> getResumeComments(UUID productId) {
+
+        return repo.allCommentsForProduct(productId);
     }
 }

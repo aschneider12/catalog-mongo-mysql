@@ -1,5 +1,6 @@
 package br.dev.as.catalog.controller;
 
+import br.dev.as.catalog.dto.ProductDTO;
 import br.dev.as.catalog.entities.mysql.Product;
 import br.dev.as.catalog.service.ProductService;
 import jakarta.websocket.server.PathParam;
@@ -19,7 +20,7 @@ public class ProductController {
     private ProductService service;
 
     @PostMapping
-    public ResponseEntity<Product> saveEvent(@RequestBody Product product) {
+    public ResponseEntity<Product> saveProduct(@RequestBody Product product) {
         service.saveProduct(product);
         return ResponseEntity.status(HttpStatus.CREATED).body(product);
     }
@@ -29,9 +30,17 @@ public class ProductController {
         return ResponseEntity.ok(service.getAllProducts());
     }
 
-    @GetMapping("/find")
-    public ResponseEntity<List<Product>> getProductsByCategory(@RequestParam("category") UUID categoryId) {
+    @GetMapping("/category/{categoryId}")
+    public ResponseEntity<List<Product>> getProductsByCategory(@PathVariable UUID categoryId) {
+
         return ResponseEntity.ok(service.getProductsByCategory(categoryId));
+    }
+
+    @GetMapping("/find")
+    public ResponseEntity<ProductDTO> getResumeProductById(
+            @RequestParam(value = "id") UUID productId) {
+
+        return ResponseEntity.ok(service.getProductResumeById(productId));
     }
 
     @DeleteMapping("/{id}")
