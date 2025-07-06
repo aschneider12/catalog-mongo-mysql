@@ -1,0 +1,337 @@
+{
+	"info": {
+		"_postman_id": "647141fa-0f42-4942-8a86-5d40bc8daccb",
+		"name": "CATALOG",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21463207",
+		"_collection_link": "https://gold-space-462811.postman.co/workspace/fiap-fase2~614e9299-cfad-4cdf-8306-40dc5f0c3b71/collection/21463207-647141fa-0f42-4942-8a86-5d40bc8daccb?action=share&source=collection_link&creator=21463207"
+	},
+	"item": [
+		{
+			"name": "categories",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"street\" : \"street fighter\",\r\n    \"country\" : \"brazil\",\r\n    \"city\" : \"cidade\"\r\n\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "products by category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/products/category/5e4af54c-a150-426c-ac8b-5a4371445eba",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"category",
+						"5e4af54c-a150-426c-ac8b-5a4371445eba"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product with comments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/products/find?id=6e6020f4-691e-496e-ac9b-ce3df0ba76e1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"find"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "6e6020f4-691e-496e-ac9b-ce3df0ba76e1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "comments for product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/comments/6e6020f4-691e-496e-ac9b-ce3df0ba76e1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"comments",
+						"6e6020f4-691e-496e-ac9b-ce3df0ba76e1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "count comments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/comments/count/6e6020f4-691e-496e-ac9b-ce3df0ba76e1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"comments",
+						"count",
+						"6e6020f4-691e-496e-ac9b-ce3df0ba76e1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "avg rating for product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/comments/rating/6e6020f4-691e-496e-ac9b-ce3df0ba76e1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"comments",
+						"rating",
+						"6e6020f4-691e-496e-ac9b-ce3df0ba76e1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "all comment (test)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "save category",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Futebol\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "save product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Chuteira Ronaldinho\",\r\n    \"description\" : \"Chuteira futebolistica\",\r\n    \"price\" : 200.00,\r\n    \"stock\" : 2,\r\n    \"categories\" : [{\r\n        \"id\": \"d56399bd-e8c4-4a4a-9519-30b418156797\"\r\n    }, {\r\n        \"id\" : \"5e4af54c-a150-426c-ac8b-5a4371445eba\"\r\n    }]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "new comment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"product\" :  {\r\n        \"id\" : \"6e6020f4-691e-496e-ac9b-ce3df0ba76e1\"\r\n    },\r\n    \"username\" : \"as\",\r\n    \"commentary\" : \"teste nota\",\r\n    \"rating\" : 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete comment",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/comments/68697e1a492822a5874c132f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"comments",
+						"68697e1a492822a5874c132f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete category",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/categories/d56399bd-e8c4-4a4a-9519-30b418156797",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categories",
+						"d56399bd-e8c4-4a4a-9519-30b418156797"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete product",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/products/853d7af4-1f45-4a51-b1db-41ca5ef1d432",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"853d7af4-1f45-4a51-b1db-41ca5ef1d432"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
